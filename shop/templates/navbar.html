@@ -1,0 +1,60 @@
+{% load static %}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{% url 'index' %}">
+      <img src="{% static "images/navbar_logo.png"%}" width="112" height="28">
+    </a>
+
+<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="{% url 'index' %}">
+        Strona Główna
+      </a>
+
+      <a class="navbar-item" href="{% url 'merchants' %}">
+        Wydawcy
+      </a>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        {% if request.user.is_authenticated %}
+        <div class="buttons">
+          <a class="button is-primary" href="{% url 'mygames' %}">
+            <strong>{{ user }}</strong>
+          </a>
+          {% if ismerchant %}
+          <a class="button is-light" href="/admin">
+            Dodaj przedmiot
+          </a>
+          {% endif %}
+          <div class="button is-light"> 
+            Twoje środki: {{ user.profile.funds }} zł
+          </div>
+          <a class="button is-light" href="{% url 'mygames' %}">
+            Moje gry
+          </a>
+          <a class="button is-light" href="{% url 'logout' %}">
+            Wyloguj
+          </a>
+        </div>
+        {% else %}
+        <div class="buttons">
+          <a class="button is-primary" href="{% url 'register' %}">
+            <strong>Załóż konto</strong>
+          </a>
+          <a class="button is-light" href="{% url 'login' %}">
+            Zaloguj się
+          </a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>

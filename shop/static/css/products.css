@@ -1,0 +1,30 @@
+.product{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    transition: all 0.5s;
+    padding: 5px;
+}
+
+.product:hover{
+	background: #e2e2e2;
+}
+
+.productImg{
+    height: 120px;
+    width: auto;
+    border-radius: 5px;
+}
+.productTitle{
+
+}
+
+.productBg{
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: 40% 25%;
+}
+
+.text-center{
+	text-align: center;
+}

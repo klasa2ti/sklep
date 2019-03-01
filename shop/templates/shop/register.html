@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% include "navbar.html" %}
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {{ userForm.as_ul }}<br>
+        <button type="submit">Zatwierdź</button>
+    </form>
+{% endblock %}

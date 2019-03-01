@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static "css/products.css" %}">
+{% endblock %}
+
+{% block body %}
+    {% include "navbar.html" %}
+    <div class="container">
+        <h2 class="title">Twoje gry</h2>
+        <ul>
+        {% for game in games %}
+        <li class="product">
+            <a class="productImg">
+                <img class="productImg" src="{{ game.product.thumbnail.url }}" alt="">
+            </a>
+            <div class="product_info">
+                <div class="productTitle"><b>{{ game.product.name }}</b></div>
+                <div class="more">
+                <p>Kod do gry: {{ game.code }}</p>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static "css/products.css" %}">
+{% endblock %}
+
+{% block body %}
+    {% include "navbar.html" %}
+    <section class="hero is-large is-primary is-bold productBg" style="background-image: url({{ game.bgc.url }});">
+      <div class="hero-body">
+        <div class="container text-tenter">
+        </div>
+      </div>
+    </section>  <br>
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <h1 class="title is-1">{{ game.name }}</h1>
+                <h2 class="subtitle">{{ game.merchant_id }}</h2>
+                <p>{{ game.description }}</p>
+            </div>
+            <div class="column">
+                {% if user.is_authenticated %}
+                    {% if hasgame %}
+                        Posiadasz już tę grę
+                    {% else %}
+                        <a href='{% url 'product_buy' game.id %}'>kup {{ game.price }} zł</a>
+                    {% endif %}
+                {% else %}
+                    <span>{{ game.price }} zł <b>Zaloguj się aby kupić</b></span>
+                {% endif %}
+                <div>
+                    {% if game.rating_count == 1 %}
+                        {{game.rating_count}} osoba oceniła tę grę na {{game.get_rating}}
+                    {% else %}
+                        {{game.rating_count}} osób oceniło tę grę na {{game.get_rating}}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    
+    </div>
+{% endblock %}

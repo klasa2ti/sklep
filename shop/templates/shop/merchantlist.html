@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static "css/products.css" %}">
+{% endblock %}
+
+{% block body %}
+    {% include "navbar.html" %}
+    <div class="container">
+        <h2 class="title">Współpracujemy z:</h2>
+        <ul>
+        {% for merchant in list %}
+        <li>
+            {{ merchant }}
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

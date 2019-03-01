@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static "css/products.css" %}">
+{% endblock %}
+
+{% block body %}
+    {% include "navbar.html" %}
+    <div class="container">
+        <h2 class="title">Najlespsze gry</h2>
+        <ul>
+        {% for product in products%}
+        <li class="product">
+            <a href="{% url 'product' product.id%}" class="productImg">
+                <img class="productImg" src="{{ product.thumbnail.url }}" alt="">
+            </a>
+            <div class="product_info">
+                <div class="productTitle"><b>{{ product.name }}</b></div>
+                <div class="more">
+                    <p>{{ product.price }} zł</p>
+                    <p>{{ product.merchant_id }}</p>
+                    <p>{{ product.rating_count }} użytkowników oceniło tę grę na {{ product.get_rating }}</p>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

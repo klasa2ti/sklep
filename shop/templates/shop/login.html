@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% include "navbar.html" %}
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button type="submit">Zatwierdź</button>
+    </form>
+{% endblock %}
